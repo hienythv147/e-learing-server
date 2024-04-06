@@ -1,12 +1,14 @@
-var Users = require('../models/users');
+var User = require('../models/users');
 
-function users() {
-    var data = Users.getUsers();
-    return data;
+exports.getUsers = function(req, res) {
+    User.getUsers(function(data) {
+        res.send({result: data});
+    });
 }
 
-function getUserById(userId) {
-    return {"user": userId};
+exports.getUserById = function(req, res) {
+    const userId = req.params.userId;
+    User.getUserById(userId, function(data) {
+        res.send({result: data});
+    });
 }
-
-module.exports = {users, getUserById};
