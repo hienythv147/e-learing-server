@@ -1,14 +1,22 @@
-var database = require('../dbConnect');
-var mongoose = require("mongoose"); 
-const Schema = mongoose.Schema;
+import mongoose from "mongoose";
 
-const UserSchema = new Schema({
-    user_name: String,
-    pass_word: String,
-    email: String,
-    roles: Boolean
-}, {
-    collection: "users"
+const UserSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    require: true,
+  },
+  password: {
+    type: String,
+    require: true,
+  },
+  email: {
+    type: String,
+    require: true,
+  },
+  roles: {
+    type: String,
+    default: "USER",
+  },
 });
 
-exports.modules = UserSchema;
+export default mongoose.model("users", UserSchema);
