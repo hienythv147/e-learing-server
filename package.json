@@ -1,6 +1,7 @@
 {
   "name": "e-learing-server",
   "version": "0.0.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www"
@@ -13,6 +14,7 @@
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "mongoose": "^8.3.0",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1"
   }

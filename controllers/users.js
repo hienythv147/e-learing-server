@@ -12,3 +12,10 @@ exports.getUserById = function(req, res) {
         res.send({result: data});
     });
 }
+
+exports.createUser = function(req, res) {
+    User.getUserById(userId, function(data) {
+        res.send({result: data});
+    });
+}
+

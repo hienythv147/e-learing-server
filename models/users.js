@@ -1,26 +1,14 @@
-const database = require('../dbConnect');
+var database = require('../dbConnect');
+var mongoose = require("mongoose"); 
+const Schema = mongoose.Schema;
 
-const User = function(user) {
-    this.id = user.id,
-    this.user_name = user.user_name,
-    this.address = user.address,
-    this.roles = user.roles
-}
+const UserSchema = new Schema({
+    user_name: String,
+    pass_word: String,
+    email: String,
+    roles: Boolean
+}, {
+    collection: "users"
+});
 
-User.getUsers = function(result) {
-    database.query("SELECT * FROM tbl_sinhvien", function (err, users) {
-        if (err) {
-            result(null);
-        } else result(users);
-    });
-};
-
-User.getUserById = function(id, result) {
-    database.query("SELECT * FROM tbl_sinhvien WHERE MaSV = ?", id, function(err, user) {
-        if (err || user.length == 0) {
-            result(null);
-        } else result(user[0]);
-    });
-}
-
-module.exports = User;
+exports.modules = UserSchema;

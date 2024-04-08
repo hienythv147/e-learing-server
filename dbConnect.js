@@ -1,15 +1,8 @@
-const mysql = require("mysql");
+var mongoose = require("mongoose");
 require('dotenv').config();
 
-var connection = mysql.createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE
-});
-connection.query("SELECT * FROM tbl_sinhvien", function (err, row) {
-    if (err) { throw err };
-    console.log("connected to db");
-});
+const connection = mongoose.connect(process.env.URI_DB)
+.then(() => console.log('Connected!'));
 
-module.exports = connection;
+exports.modules = connection;
+
